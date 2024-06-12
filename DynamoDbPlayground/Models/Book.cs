@@ -26,3 +26,14 @@ public class Book
     [DynamoDBProperty(typeof(ListIntConverter))]
     public List<int> Ratings { get; set; } = [];
 }
+
+class OnlyPublished
+{
+    [DynamoDBHashKey] 
+    public string AuthorId { get; set; } = default!;
+    
+    [DynamoDBRangeKey] 
+    public string Id { get; set; } = default!;
+    
+    public DateTime Published { get; set; }
+}
